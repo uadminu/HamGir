@@ -9,7 +9,6 @@ PASSWORD = config.PASSWORD
 CHAIR_NUM = config.CHAIR_NUM
 USER_ID = config.USER_ID
 
-
 cookies_dict = ""
 checkInitData = ""
 
@@ -32,7 +31,6 @@ headers = {
 
 s = requests.Session()
 
-
 # # ------------------
 # # Session Request
 # # ------------------
@@ -49,7 +47,6 @@ def req(headers, jsonData, funcName):
         exit()
     except:
         print("An error occurred")
-
 
 # # ------------------
 # # Login
@@ -90,7 +87,6 @@ def login(username=USERNAME, password=PASSWORD):
 
     return response.json()["Data"]["UserID"]
 
-
 # ------------------
 # Reserve Chair
 # ------------------
@@ -108,8 +104,9 @@ def reserveChair(userId=USER_ID, chairNumber=CHAIR_NUM):
     response = req(headers, json_data, "Reserve Chair")
 
     print(response.json()["Data"]["MessageText"])
-    return response.json()["Data"]["MessageText"]
-
+    if response.status_code == 200:
+        time.sleep(1)
+        return check()
 
 # ------------------
 # Check
@@ -127,7 +124,6 @@ def check(userId=USER_ID):
     print(response.json()["Data"])
     return response.json()["Data"]
 
-
 # ------------------
 # Check Logged In
 # ------------------
@@ -144,7 +140,6 @@ def checkLoggedIn():
         return True
     else:
         return False
-
 
 # ------------------
 # end chair
@@ -165,7 +160,6 @@ def endChair(userId=USER_ID):
         time.sleep(1)
         return check()
 
-
 # ------------------
 # Save cookies to a file
 # ------------------
@@ -174,14 +168,12 @@ def save_cookies():
         pickle.dump(s.cookies, f)
         print("Session data saved to session_data.pkl")
 
-
 # ------------------
 # Load cookies from file (before creating a session)
 # ------------------
 def load_cookies():
     with open("session_data.pkl", "rb") as f:
         s.cookies.update(pickle.load(f))
-
 
 # ------------------
 # init
@@ -199,7 +191,6 @@ def init():
         print("Not Logged In")
         exit()
 
-
 # ------------------
 # Main
 # ------------------
@@ -213,12 +204,8 @@ def main():
 
         if toDo == "1":
             reserveChair()
-            time.sleep(1)
-            check()
         elif toDo == "2":
             endChair()
-            time.sleep(1)
-            check()
         elif toDo == "3":
             print(login())
         elif toDo == "4":
@@ -226,7 +213,6 @@ def main():
         else:
             print("Wrong Input")
             continue
-
 
 # ------------------
 if __name__ == "__main__":
