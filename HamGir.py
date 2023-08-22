@@ -84,6 +84,9 @@ def login(username=USERNAME, password=PASSWORD):
             + str(response.json()["Data"]["UserID"])
             + "\nLoggined Successfully"
         )
+    else:
+        print("Wrong username or password")
+        exit()
 
     return response.json()["Data"]["UserID"]
 
@@ -188,7 +191,7 @@ def init():
     if checkLoggedIn():
         return
     else:
-        print("Not Logged In")
+        print("Something went wrong while logging in, please try again!")
         exit()
 
 # ------------------
