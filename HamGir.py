@@ -183,6 +183,17 @@ def load_cookies():
 # init
 # ------------------
 def init():
+    if USER_ID == "":
+        print("FIRST initialization...")
+        userID = login()
+        with open("config.py", "w") as f:
+            f.write(
+                f"USERNAME = \"{USERNAME}\"\nPASSWORD = \"{PASSWORD}\"\nUSER_ID = {userID}\nCHAIR_NUM = {CHAIR_NUM}\nAPI_URL = \"{API_URL}\""
+            )
+            f.close()
+        print("FIRST initialization done, please run again")
+        exit()
+
     try:
         load_cookies()
     except:
@@ -243,16 +254,6 @@ if __name__ == "__main__":
             print("Wrong Input")
             exit()
         
-    if USER_ID == "":
-        print("FIRST initialization...")
-        userID = login()
-        with open("config.py", "w") as f:
-            f.write(
-                f"USERNAME = \"{USERNAME}\"\nPASSWORD = \"{PASSWORD}\"\nUSER_ID = {userID}\nCHAIR_NUM = {CHAIR_NUM}\nAPI_URL = \"{API_URL}\""
-            )
-            f.close()
-        print("FIRST initialization done, please run again")
-        exit()
     init()
     main()
 # ------------------
