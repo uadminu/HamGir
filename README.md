@@ -4,12 +4,38 @@
 
 **Easy Reservation:** With HamGir, reserving Hamkara's chair is just a few clicks away.
 
-## Usage
+## Usage:
 
-1. Clone the repository: `git clone https://github.com/uadminu/HamGir.git`
-2. Navigate to the project directory: `cd HamGir`
-3. Insert your Username, Password, and Chair number in `config.py`
-4. `python3 HamGir.py` and Enjoy:)
+- Clone the repository: `git clone https://github.com/uadminu/HamGir.git`
+- Navigate to the project directory: `cd HamGir`
+
+### - Manual Setup
+
+_In this way you No need to login all the time and better for personal use_
+
+To set up and use HamGir manually, follow these steps:
+
+- Insert your Username, Password, and Chair number in `config.py`
+
+- `python3 HamGir.py` and Enjoy:)
+
+### - Command Line
+
+To use HamGir with command line arguments, follow these steps:
+
+Run the following command, replacing `USERNAME`, `PASSWORD`, `CHAIRNUMBER`, and `TODO` with your own values:
+
+```bash
+python3 HamGir.py USERNAME PASSWORD CHAIRNUMBER TODO
+```
+
+- `USERNAME`: Your username for authentication.
+- `PASSWORD`: Your password for authentication.
+- `CHAIRNUMBER`: The number of the chair you want to reserve.
+- `TODO`:
+  - `1` to reserve a chair.
+  - `2` to cancel a chair reservation.
+  - `3` to check the reservation status.
 
 ## Disclaimer
 
