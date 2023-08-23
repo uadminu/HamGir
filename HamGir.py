@@ -2,6 +2,7 @@ import requests
 import config
 import time
 import pickle
+import sys
 
 API_URL = config.API_URL
 USERNAME = config.USERNAME
@@ -219,6 +220,29 @@ def main():
 
 # ------------------
 if __name__ == "__main__":
+    if len(sys.argv) == 5:
+        USERNAME = sys.argv[1]
+        PASSWORD = sys.argv[2]
+        CHAIR_NUM = int(sys.argv[3])
+        USER_ID = login(USERNAME, PASSWORD)
+        USER_ID = int(USER_ID)
+
+        # Reserve Chair Mode
+        if sys.argv[4] == "1":
+            reserveChair(USER_ID, CHAIR_NUM)
+            exit()
+        # End Chair Mode
+        elif sys.argv[4] == "2":
+            endChair(USER_ID)
+            exit()
+        # Check Mode
+        elif sys.argv[4] == "3":
+            check(USER_ID)
+            exit()
+        else:
+            print("Wrong Input")
+            exit()
+        
     if USER_ID == "":
         print("FIRST initialization...")
         userID = login()
