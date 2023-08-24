@@ -10,7 +10,6 @@ PASSWORD = config.PASSWORD
 CHAIR_NUM = config.CHAIR_NUM
 USER_ID = config.USER_ID
 
-cookies_dict = ""
 checkInitData = ""
 
 headers = {
