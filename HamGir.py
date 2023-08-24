@@ -10,8 +10,6 @@ PASSWORD = config.PASSWORD
 CHAIR_NUM = config.CHAIR_NUM
 USER_ID = config.USER_ID
 
-checkInitData = ""
-
 headers = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/116.0",
     "Accept": "application/json, text/plain, */*",
